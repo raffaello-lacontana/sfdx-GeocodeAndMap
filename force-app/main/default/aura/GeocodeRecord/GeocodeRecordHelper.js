@@ -2,8 +2,8 @@
     search : function(component, event, helper) { 
     	var xmlHttp = new XMLHttpRequest();
         var searchString = 'https://nominatim.openstreetmap.org/search/';
-    	searchString += cmp.find("searchString").get("v.value");
-        searchString += '?format=json&addressdetails=1&limit=1&polygon_svg=1';
+    	searchString += component.find("searchString").get("v.value");
+        searchString += '?format=json&addressdetails=1&limit=10&polygon_svg=1';
     	console.log(searchString);
     	xmlHttp.open( "GET", searchString, true );
 	    xmlHttp.setRequestHeader('Content-Type', 'application/json');
@@ -15,7 +15,7 @@
     		if (xmlHttp.readyState === 4) {
     	    	if (xmlHttp.status === 200) {
 	            	console.log(xmlHttp.response);
-            		console.log(xmlHttp.responseText);
+            		//console.log(xmlHttp.responseText);
 		        }
 	    	}
 		};
