@@ -1,9 +1,10 @@
-<aura:component implements="flexipage:availableForRecordHome, force:hasRecordId">
+<aura:component controller="GeocodeUtils" implements="flexipage:availableForRecordHome,force:hasRecordId">
 
+    <aura:attribute name="googleApiKey" type="String"/>
     <aura:attribute name="record" type="Object"/>
     <aura:attribute name="simpleRecord" type="Object"/>
     <aura:attribute name="recordError" type="String"/>
-    <aura:attribute name="results" type="List"/>
+    <aura:attribute name="results" type="Object"/>
 
     <force:recordData aura:id="recordLoader"
       recordId="{!v.recordId}"

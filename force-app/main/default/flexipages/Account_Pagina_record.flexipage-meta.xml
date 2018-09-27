@@ -145,6 +145,10 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentInstanceProperties>
+                <name>googleApiKey</name>
+                <value>AIzaSyAuXrBadp86NpZfrkoWEd4wU7PQdEoA3GA</value>
+            </componentInstanceProperties>
             <componentName>GeocodeRecord</componentName>
         </componentInstances>
         <componentInstances>
