@@ -1,35 +1,36 @@
 <aura:component controller="GeocodeUtils" implements="flexipage:availableForRecordHome,force:hasRecordId">
-
-    <aura:attribute name="googleApiKey" type="String"/>
+    
+    <aura:attribute name="recordId" type="String" default="0010E00000PcDjFQAV"/>
+    <aura:attribute name="googleApiKey" type="String" default="AIzaSyAuXrBadp86NpZfrkoWEd4wU7PQdEoA3GA"/>
     <aura:attribute name="record" type="Object"/>
     <aura:attribute name="simpleRecord" type="Object"/>
     <aura:attribute name="recordError" type="String"/>
     <aura:attribute name="results" type="Object"/>
-
+    
     <force:recordData aura:id="recordLoader"
-      recordId="{!v.recordId}"
-      targetFields="{!v.simpleRecord}"
-      targetError="{!v.recordError}"
-      recordUpdated="{!c.handleRecordUpdated}"
-      layoutType="FULL"
-      />
-
+                      recordId="{!v.recordId}"
+                      targetFields="{!v.simpleRecord}"
+                      targetError="{!v.recordError}"
+                      recordUpdated="{!c.handleRecordUpdated}"
+                      layoutType="FULL"
+                      fields="BillingLatitude, BillingLongitude"
+                      />
+    
     <!-- Display a lightning card with details about the record -->
     <div class="Record Details"> 
-    <lightning:card iconName="standard:account" title="{!v.simpleRecord.Name}" >
-        <div class="slds-p-horizontal_small">
-            <p class="slds-text-heading_small">
-                <lightning:formattedText title="Billing City" value="{!v.simpleRecord.BillingCity}" /></p>
-            <p class="slds-text-heading_small">
-                <lightning:formattedText title="Billing State" value="{!v.simpleRecord.BillingState}" /></p>
-        </div>
-        <div class="slds-p-horizontal_small">
-            <lightning:input aura:id="searchString" label="searchString"/><br/>
-            <lightning:button label="Send Request" onclick="{!c.clickSearch}"/>
-        </div>
-    </lightning:card>
+        <lightning:card iconName="standard:account" title="{!v.simpleRecord.Name}" >
+            <div class="slds-p-horizontal_small">
+                <p class="slds-text-heading_small">
+                    <lightning:formattedLocation latitude="{!v.simpleRecord.BillingLatitude}" longitude="{!v.simpleRecord.BillingLongitude}"/>
+                </p>
+            </div>
+            <div class="slds-p-horizontal_small">
+                <lightning:input aura:id="searchString" label="searchString"/><br/>
+                <lightning:button label="Send Request" onclick="{!c.clickSearch}"/>
+            </div>
+        </lightning:card>
     </div>
-
+    
     <!-- Display Lightning Data Service errors, if any -->
     <!-- <aura:if isTrue="{!not(empty(v.recordError))}">
         <div class="recordError">

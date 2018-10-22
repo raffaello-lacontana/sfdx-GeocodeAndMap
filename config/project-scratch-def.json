@@ -1,7 +1,10 @@
 {
     "orgName": "rlacontana Company",
-    "edition": "Developer",
-    "orgPreferences" : {
-        "enabled": ["S1DesktopEnabled"]
+    "edition": "Enterprise",
+    "features": [],
+    "settings": {
+        "orgPreferenceSettings": {
+            "s1DesktopEnabled": true
+        }
     }
 }

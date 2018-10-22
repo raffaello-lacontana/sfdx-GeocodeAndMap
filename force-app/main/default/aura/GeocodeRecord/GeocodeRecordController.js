@@ -13,7 +13,7 @@
         }
     },
 
-    clickSearch : function(component, event, helper) { 
+    clickSearch : function(component, event, helper) {
         helper.search(component, event, helper); 
     } 
 })
